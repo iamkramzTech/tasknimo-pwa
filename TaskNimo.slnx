@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/backend/">
+    <Project Path="backend/TaskNimo.WebAPI/TaskNimo.WebAPI.csproj" />
+  </Folder>
+</Solution>

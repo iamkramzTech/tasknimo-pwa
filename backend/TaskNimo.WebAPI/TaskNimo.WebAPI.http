@@ -1,0 +1,6 @@
+@TaskNimo.WebAPI_HostAddress = http://localhost:5163
+
+GET {{TaskNimo.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
