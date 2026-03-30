@@ -1,3 +1,6 @@
+var port = Environment.GetEnvironmentVariable("PORT") ?? "10000";
+
+var url = $"http://0.0.0.0:{port}";
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -33,7 +36,7 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
-app.Run();
+app.Run(url: url);
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
