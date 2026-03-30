@@ -13,22 +13,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-
-    - name: Install & Build
-      run: |
-        cd frontend
-        npm install
-        npm run build
-
-    - name: Deploy to Netlify
+    - name: Deploy to Netlify (Static)
       run: |
         npm install -g netlify-cli
         netlify deploy \
-          --dir=frontend/dist \
+          --dir=frontend \
           --prod \
           --site=$NETLIFY_SITE_ID \
           --auth=$NETLIFY_AUTH_TOKEN

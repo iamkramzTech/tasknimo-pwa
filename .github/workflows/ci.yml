@@ -18,35 +18,27 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: '10.0.x'   
 
     - name: Restore dependencies
-      run: dotnet restore ./backend
+      run: dotnet restore TaskNimo.sln
 
     - name: Build
-      run: dotnet build ./backend --no-restore
+      run: dotnet build TaskNimo.sln --no-restore
 
     - name: Test
-      run: dotnet test ./backend --no-build
+      run: dotnet test TaskNimo.sln --no-build
 
-  build-frontend:
+
+  validate-frontend:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-
-    - name: Install dependencies
+    - name: Validate frontend files exist
       run: |
-        cd frontend
-        npm install
-
-    - name: Build frontend
-      run: |
-        cd frontend
-        npm run build
+        echo "Checking frontend structure..."
+        test -f frontend/index.html
+        echo "Frontend structure OK"
